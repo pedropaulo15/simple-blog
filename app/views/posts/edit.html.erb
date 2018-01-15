@@ -1,0 +1,33 @@
+<h1>Edit Post</h1>
+<!-- It creates a sort of form object called f -->
+<!-- It posts to our create method -->
+<!-- The "form_for" is a form helper and it submits to the create method in posts_controller -->
+<%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+	
+	<!-- It has already error messages built in Rails -->
+	<!-- If @post has any erros -->
+	<% if @post.errors.any? %>
+		<!-- Loop the possible error messages -->
+		<% @post.errors.full_messages.each do |msg| %>
+			<!-- Display the error message -->
+			<div class="alert alert-danger"><%= msg %></div>
+		<% end %>
+	<% end %>
+
+	<!-- Create the labels -->
+	<p>
+		<%= f.label :title %><br>
+		<%= f.text_field :title, :class => 'form-control' %>
+	</p>
+
+	<!-- Create the fields -->
+	<p>
+		<%= f.label :body %><br>
+		<%= f.text_area :body, :class => 'form-control' %>
+	</p>
+
+	<!-- Submit Button -->
+	<p>
+		<%= f.submit :class => 'btn btn-primary' %><br>
+	</p>
+<% end %>

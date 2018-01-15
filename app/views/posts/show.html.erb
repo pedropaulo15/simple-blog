@@ -1,0 +1,18 @@
+<!-- The @post is the object coming from the posts_controller.rb and method show -->
+<!-- title and body are the attributes from the post object -->
+<h2><%= @post.title %></h2>
+<p><%= @post.body %></p>
+<hr>
+<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-default' %>
+
+<%= link_to "Delete", post_path(@post), 
+		method: :delete, 
+		data: {confirm: 'Are you sure?'},
+		:class => 'btn btn-danger' %>
+
+<hr>
+
+
+<!-- Render from the comments view folder -->
+<%= render 'comments/comments' %>
+<%= render 'comments/form' %>
